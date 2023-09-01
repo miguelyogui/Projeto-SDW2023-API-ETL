@@ -29,5 +29,4 @@ Seu trabalho é consumir o endpoint GET (https://miguelyogui.pythonanywhere.com/
 Depois de obter o ingrediente, você vai usar a API do ChatGPT (OpenAI) para gerar uma receita sofisticada para o ingrediente selecionado. 
 
 Nesse COLAB é possível testar
-https://colab.research.google.com/drive/1Gqu7OceaS3RKy4eUtf5d6Z4N2Wsyz7Q-#scrollTo=XL6pcEhV5K1V
-
+https://colab.research.google.com/drive/1Gqu7OceaS3RKy4eUtf5d6Z4N2Wsyz7Q-?usp=sharing
