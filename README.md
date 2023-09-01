@@ -1,6 +1,13 @@
 # Projeto-SDW2023-API-ETL
 Santander Dev Week 2023 (ETL com Python)
 
+RESTful API para o Santander Dev Week 2023 construída em Python 3.10 e Flask.
+
+Principais Tecnologias
+Python 3.10
+Flask
+PythonAnyWhere
+
 # # Contexto: Entendendo o Desafio - DIO - Santander Dev Week 2023 (ETL com Python)
 Agora é a sua hora de brilhar e construir um perfil de destaque na DIO! Explore todos os conceitos explorados até aqui e replique (ou melhore, porque não?) este projeto prático. Para isso, crie seu próprio repositório e aumente ainda mais seu portfólio de projetos no GitHub, o qual pode fazer toda diferença em suas entrevistas técnicas 😎
 
@@ -20,4 +27,7 @@ id
 10
 Seu trabalho é consumir o endpoint GET (https://miguelyogui.pythonanywhere.com/ingrediente/{id}) (Minha API Criada para o Santander Dev Week 2023) para obter os dados de cada Ingrediente e fornecer uma Receita sofisticada.
 Depois de obter o ingrediente, você vai usar a API do ChatGPT (OpenAI) para gerar uma receita sofisticada para o ingrediente selecionado. 
+
+Nesse COLAB é possível testar
+https://colab.research.google.com/drive/1Gqu7OceaS3RKy4eUtf5d6Z4N2Wsyz7Q-#scrollTo=XL6pcEhV5K1V
 
