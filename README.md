@@ -20,3 +20,4 @@ id
 10
 Seu trabalho é consumir o endpoint GET (https://miguelyogui.pythonanywhere.com/ingrediente/{id}) (Minha API Criada para o Santander Dev Week 2023) para obter os dados de cada Ingrediente e fornecer uma Receita sofisticada.
 Depois de obter o ingrediente, você vai usar a API do ChatGPT (OpenAI) para gerar uma receita sofisticada para o ingrediente selecionado. 
+
