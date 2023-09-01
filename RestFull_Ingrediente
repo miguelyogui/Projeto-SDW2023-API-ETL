@@ -1,0 +1,72 @@
+# Utilize sua própria URL se quiser ;)
+# Repositório da API: https://github.com/MiguelYogui
+sdw2023_api_url = 'https://miguelyogui.pythonanywhere.com/'
+
+#Extraia a lista de IDs de usuário a partir do arquivo CSV. Para cada ID, 
+# faça uma requisição GET para obter os dados do usuário correspondente.
+# Utilize até 3 Ids para não gerr erro, pois a conta free do openAI possui restrição de consultas
+#Rate limit reached for default-gpt-3.5-turbo in organization org-doi9YJHteqCWiBypPpcoz4fj on 
+#requests per min. Limit: 3 / min. Please try again in 20s. Contact us through our help center at 
+# help.openai.com if you continue to have issues. Please add a payment method to your account to increase 
+# your rate limit. Visit https://platform.openai.com/account/billing to add a payment method.
+
+import pandas as pd
+
+df = pd.read_csv('ingredientes.csv')
+ids = df['id'].tolist()
+print(f"Segue lista de Ids de  ingredientes: {ids} ")
+
+import requests
+import json
+
+def get_ingrediente(id):
+  response = requests.get(f'{sdw2023_api_url}/ingrediente/{id}')
+  return response.json() if response.status_code == 200 else None
+
+ingrediente = [ingrediente for id in ids if (ingrediente := get_ingrediente(id)) is not None]
+print(json.dumps(ingrediente, indent=2))
+
+
+
+#Utilize a API do OpenAI GPT-4 para gerar uma mensagem de marketing personalizada para cada usuário.
+#!pip install openai
+
+
+# Documentação Oficial da API OpenAI: https://platform.openai.com/docs/api-reference/introduction
+# Informações sobre o Período Gratuito: https://help.openai.com/en/articles/4936830
+
+# Para gerar uma API Key:
+# 1. Crie uma conta na OpenAI
+# 2. Acesse a seção "API Keys"
+# 3. Clique em "Create API Key"
+# Link direto: https://platform.openai.com/account/api-keys
+
+# Substitua o texto TODO por sua API Key da OpenAI, ela será salva como uma variável de ambiente.
+openai_api_key = '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'
+
+import openai
+
+openai.api_key = openai_api_key
+
+#função para conversar com o ChatGPT
+def generate_ai_receita(ingrediente):
+  completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {
+          "role": "system",
+          "content": "Você é um especialista em gastronomia."
+      },
+      {
+          "role": "user",
+          "content": f"Crie uma receita sofistica com o ingrediente {ingrediente['ingrediente']} e informe que é uma sugestão gastronomica do Santader (máximo de 500 caracteres)"
+      }
+    ]
+  )
+  #Retorna a resposta das perguntas solicitadas
+  return completion.choices[0].message.content.strip('\"')
+
+#criar um FOr para os usuarios
+for ingrediente in ingrediente:
+  receita = generate_ai_receita(ingrediente)
+  print(receita)
